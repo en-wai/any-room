@@ -45,6 +45,18 @@ The Hotel Booking Management System is designed to provide a seamless hotel book
 The Amazing Hotel Booking Management System is not only a practical demonstration of advanced web development skills but also a testament to the ability to deliver a robust solution within a limited timeframe. This project showcases both technical prowess and project management skills.
 
 ## How to Run
+
+### Development Environment
+
+I developed this app with the following:
+- System - Lenovo Lenovo ideapad 330S-15IKB
+- Operating System - Ubuntu 22.04.3 LTS
+- Installed Software Versions:
+    - XAMPP - 8.2.12-0 
+    - PHP 8.1.2-1ubuntu2.14
+    - Composer 2.2.6 2022-02-04 17:00:38
+
+
 [Include instructions on how to set up and run the project]
 
 ## Feedback and Contributions
