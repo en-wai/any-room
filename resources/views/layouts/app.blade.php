@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'ANY-ROOM') }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
@@ -111,7 +111,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="index.html">ANY<span>ROOM</span></a>
+                <a class="navbar-brand" href="{{ url('/') }}">ANY<span>ROOM</span></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="fa fa-bars"></span> Menu
               </button>
@@ -122,8 +122,37 @@
                     <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                     <li class="nav-item"><a href="rooms.html" class="nav-link">Apartment Room</a></li>
                   <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                  <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
-                  <li class="nav-item"><a href="register.html" class="nav-link">Register</a></li>
+
+
+
+
+                  @guest
+                        @if (Route::has('login'))              
+                           <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Login</a></li>
+                        @endif
+                        @if (Route::has('register')) 
+                           <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Register</a></li>
+                        @endif
+                    
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                 </ul>
               </div>
             </div>
