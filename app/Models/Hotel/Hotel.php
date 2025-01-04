@@ -22,5 +22,4 @@ class Hotel extends Model
 
 
     public $timestamps = true;
-
 }
