@@ -94,6 +94,8 @@
           <div class="row justify-content-middle" style="margin-left: 397px;">
               <div class="col-md-6 mt-5">
                       <form action="{{ route('register') }}" method="POST" class="appointment-form" style="margin-top: -568px;">
+                        @csrf
+                        
                           <h3 class="mb-3">Register</h3>
                           <div class="row">
                               <div class="col-md-12">
