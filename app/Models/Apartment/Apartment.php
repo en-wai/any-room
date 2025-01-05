@@ -20,7 +20,9 @@ class Apartment extends Model
         'size',
         'view',
         'num_beds',
+        'price',
         'hotel_id',
+        
     ];
 
 

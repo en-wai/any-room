@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;  
 use App\Models\Hotel\Hotel; // Imports the Hotel model
+use App\Models\Apartment\Apartment; // Imports the Hotel model
 class HomeController extends Controller
 {
     /**
@@ -26,6 +27,9 @@ class HomeController extends Controller
 
 
         $hotels = Hotel::select()->orderBy('id','desc')->take(3)->get(); //This line fetches the latest 3 hotels from the Hotel model by ordering records in descending order of their id.
-        return view('home', compact('hotels'));
+        
+        $rooms = Apartment::select()->orderBy('id','desc')->take(3)->get();
+
+        return view('home', compact('hotels', 'rooms'));
     }
 }

@@ -40,6 +40,7 @@
   <section class="ftco-section ftco-services">
       <div class="container">
           <div class="row">
+            
             @foreach ($hotels as $hotel)
             <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
               <div class="d-block services-wrap text-center">
@@ -89,26 +90,30 @@
         </div>
       </div>
               <div class="row no-gutters">
-              <div class="col-lg-6">
-                  <div class="room-wrap d-md-flex">
-                      <a href="#" class="img" style="background-image: url(images/room-1.jpg);"></a>
-                      <div class="half left-arrow d-flex align-items-center">
-                          <div class="text p-4 p-xl-5 text-center">
-                              <p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-                              <!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-                              <h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-                              <ul class="list-accomodation">
-                                  <li><span>Max:</span> 3 Persons</li>
-                                  <li><span>Size:</span> 45 m2</li>
-                                  <li><span>View:</span> Sea View</li>
-                                  <li><span>Bed:</span> 1</li>
-                              </ul>
-                              <p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+                @foreach ($rooms as $room)
+                    <div class="col-lg-6">
+                      <div class="room-wrap d-md-flex">
+                          <a href="#" class="img" style="background-image: url({{ asset('assets/images/'.$room->image.'') }});"></a>
+                          <div class="half left-arrow d-flex align-items-center">
+                              <div class="text p-4 p-xl-5 text-center">
+                                  <p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
+                                  <!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
+                                  <h3 class="mb-3"><a href="rooms.html">{{ $room->image }}</a></h3>
+                                  <ul class="list-accomodation">
+                                      <li><span>Max:</span> {{ $room->num_persons }} Persons</li>
+                                      <li><span>Size:</span> {{ $room->size }} m2</li>
+                                      <li><span>View:</span> {{ $room->view }}</li>
+                                      <li><span>Bed:</span> {{ $room->num_beds }}</li>
+                                      <li><span>Price:</span> {{ $room->price }}</li>
+                                  </ul>
+                                  <p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+                              </div>
                           </div>
                       </div>
-                  </div>
-              </div>
-              <div class="col-lg-6">
+                    </div>
+                @endforeach
+              
+              {{-- <div class="col-lg-6">
                   <div class="room-wrap d-md-flex">
                       <a href="#" class="img" style="background-image: url(images/room-2.jpg);"></a>
                       <div class="half left-arrow d-flex align-items-center">
@@ -126,9 +131,9 @@
                           </div>
                       </div>
                   </div>
-              </div>
+              </div> --}}
 
-              <div class="col-lg-6">
+              {{-- <div class="col-lg-6">
                   <div class="room-wrap d-md-flex">
                       <a href="#" class="img order-md-last" style="background-image: url(images/room-3.jpg);"></a>
                       <div class="half right-arrow d-flex align-items-center">
@@ -168,7 +173,7 @@
               </div>
           </div>
           </div>
-      </section>
+      </section> --}}
 
 
 
