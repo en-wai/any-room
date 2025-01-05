@@ -28,7 +28,7 @@ class HomeController extends Controller
 
         $hotels = Hotel::select()->orderBy('id','desc')->take(3)->get(); //This line fetches the latest 3 hotels from the Hotel model by ordering records in descending order of their id.
         
-        $rooms = Apartment::select()->orderBy('id','desc')->take(3)->get();
+        $rooms = Apartment::select()->orderBy('id','desc')->take(4)->get();
 
         return view('home', compact('hotels', 'rooms'));
     }
