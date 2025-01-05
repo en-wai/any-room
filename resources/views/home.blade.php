@@ -101,7 +101,7 @@
                                   <h3 class="mb-3"><a href="rooms.html">{{ $room->name }}</a></h3>
                                   <ul class="list-accomodation">
                                       <li><span>Max:</span> {{ $room->num_persons }} Persons</li>
-                                      <li><span>Size:</span> {{ $room->size }} m2</li>
+                                      <li><span>Size:</span> {{ $room->size }} m<sup>2</sup></li>
                                       <li><span>View:</span> {{ $room->view }}</li>
                                       <li><span>Bed:</span> {{ $room->num_beds }}</li>
                                       <li><span>Price:</span> {{ $room->price }}</li>
