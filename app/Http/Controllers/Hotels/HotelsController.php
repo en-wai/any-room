@@ -7,5 +7,15 @@ use Illuminate\Http\Request;
 
 class HotelsController extends Controller
 {
-    //
+    
+
+
+
+    public function rooms($id) {
+
+        $getRooms = Apartment::select(->orderBy('id, 'desc)->take(6)
+         ->where('hotel_id'), $id)->get();
+
+        return view('hotels.rooms', compact('getRooms'))
+    }
 }
