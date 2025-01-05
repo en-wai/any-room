@@ -23,7 +23,7 @@
 
 
 
-<div class="hero-wrap js-fullheight" style="margin-top: -25px; background-image: url('{{asset('assets/images/image_2.jpg')}}'); data-stellar-background-ratio="0.5"">
+<div class="hero-wrap js-fullheight" style="margin-top: -25px; background-image: url('{{asset('assets/images/image_2.jpg')}}');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
@@ -40,7 +40,7 @@
   <section class="ftco-section ftco-services">
       <div class="container">
           <div class="row">
-            
+
             @foreach ($hotels as $hotel)
             <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
               <div class="d-block services-wrap text-center">
@@ -98,7 +98,7 @@
                               <div class="text p-4 p-xl-5 text-center">
                                   <p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
                                   <!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-                                  <h3 class="mb-3"><a href="rooms.html">{{ $room->image }}</a></h3>
+                                  <h3 class="mb-3"><a href="rooms.html">{{ $room->name }}</a></h3>
                                   <ul class="list-accomodation">
                                       <li><span>Max:</span> {{ $room->num_persons }} Persons</li>
                                       <li><span>Size:</span> {{ $room->size }} m2</li>
