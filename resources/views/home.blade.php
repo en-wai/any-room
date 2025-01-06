@@ -28,7 +28,7 @@
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
         <div class="col-md-7 ftco-animate">
-            <h2 class="subheading">Welcome to ANY-Room</h2>
+            <h2 class="subheading" style="color: rgb(252, 69, 106); font-weight: bold;" >Welcome to ANY-ROOM</h2>
             <h1 class="mb-4">Rent an appartment for your vacation</h1>
           <p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p>
         </div>
@@ -93,12 +93,13 @@
                 @foreach ($rooms as $room)
                     <div class="col-lg-6">
                       <div class="room-wrap d-md-flex">
-                          <a href="#" class="img" style="background-image: url({{ asset('assets/images/'.$room->image.'') }});"></a>
+                        <a href="{{ route('hotel.rooms.details', $room->id) }}" class="img" style="background-image: url({{ asset('assets/images/'.$room->image.'') }});"></a>
+                       
                           <div class="half left-arrow d-flex align-items-center">
                               <div class="text p-4 p-xl-5 text-center">
                                   <p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
                                   <!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-                                  <h3 class="mb-3"><a href="rooms.html">{{ $room->name }}</a></h3>
+                                  <h3 class="mb-3"><a href="{{ route('hotel.rooms.details', $room->id)}}">{{ $room->name }}</a></h3>
                                   <ul class="list-accomodation">
                                       <li><span>Max:</span> {{ $room->num_persons }} Persons</li>
                                       <li><span>Size:</span> {{ $room->size }} m<sup>2</sup></li>
@@ -106,7 +107,7 @@
                                       <li><span>Bed:</span> {{ $room->num_beds }}</li>
                                       <li><span>Price:</span> {{ $room->price }}</li>
                                   </ul>
-                                  <p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+                                  <p class="pt-1"><a href="{{ route('hotel.rooms.details', $room->id) }}" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
                               </div>
                           </div>
                       </div>
