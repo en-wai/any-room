@@ -26,7 +26,7 @@ class HotelsController extends Controller
 
     public function roomBooking(Request $request, $id) {
         $room = Apartment::find($id);
-        $hotel = Apartment::find($id);
+        $hotel = Hotel::find($id);
 
         // Convert dates to DateTime objects for proper comparison
         $today = new DateTime();
