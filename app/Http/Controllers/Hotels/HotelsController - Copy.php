@@ -26,7 +26,7 @@ class HotelsController extends Controller
 
     public function roomBooking(Request $request, $id) {
         $room = Apartment::find($id);
-        $hotel = Hotel::find($room->hotel_id);  // Fetch hotel by hotel_id from the room
+        $hotel = Hotel::find($id);
 
         // Convert dates to DateTime objects for proper comparison
         $today = new DateTime();
@@ -36,11 +36,7 @@ class HotelsController extends Controller
         if ($today < $checkIn && $today < $checkOut) {
             if ($checkIn < $checkOut) {
                 $interval = $checkIn->diff($checkOut);  // Get difference between check-in and check-out
-                $days = (int) $interval->format('%a');  // Convert days to integer
-
-                // Convert room price to a float for calculation
-                $pricePerNight = (float) str_replace(['$', ','], '', $room->price);  
-                $totalPrice = $days * $pricePerNight;  // Calculate total price
+                $days = $interval->format('%a');
 
                 // Logic for booking rooms
                 $bookRooms = Booking::create([
@@ -50,13 +46,13 @@ class HotelsController extends Controller
                     "check_in" => $request->check_in,
                     "check_out" => $request->check_out,
                     "days" => $days,
-                    "price" => $totalPrice,
+                    "price" => $days * $room->price,
                     "user_id" => Auth::user()->id,
                     "room_name" => $room->name,
-                    "hotel_name" => $hotel ? $hotel->name : 'Hotel Not Found',  // Handle null hotel
+                    "hotel_name" => $hotel->name,
                 ]);
 
-                echo "Your room has been successfully booked for {$days} days at a total price of $ {$totalPrice}.";
+                echo "Your room has been successfully booked. We look forward to your stay!";
             } else {
                 echo "The check-out date must be later than the check-in date. Please adjust your selection.";
             }
