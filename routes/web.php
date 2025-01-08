@@ -27,3 +27,8 @@ Route::get('hotels/rooms-details/{id}', [App\Http\Controllers\Hotels\HotelsContr
 Route::post('hotels/rooms-booking/{id}', [App\Http\Controllers\Hotels\HotelsController::class, 'roomBooking'])->name('hotel.rooms.booking');
 
 
+// Payment Route
+Route::post('hotels/pay', [App\Http\Controllers\Hotels\HotelsController::class, 'payWithPaypal'])->name('hotel.pay');
+Route::post('hotels/success', [App\Http\Controllers\Hotels\HotelsController::class, 'sucess'])->name('hotel.success');
+
+

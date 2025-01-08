@@ -56,12 +56,37 @@ class HotelsController extends Controller
                     "hotel_name" => $hotel ? $hotel->name : 'Hotel Not Found',  // Handle null hotel
                 ]);
 
-                echo "Your room has been successfully booked for {$days} days at a total price of $ {$totalPrice}.";
+                $price = Session::put('price', $totalPrice);
+
+
+                $getPrice = Session::put($price);
+
+                return Redirect::route('hotel.pay')
+
+
+                //echo "Your room has been successfully booked for {$days} days at a total price of $ {$totalPrice}.";
             } else {
                 echo "The check-out date must be later than the check-in date. Please adjust your selection.";
             }
         } else {
             echo "Please select future dates for both check-in and check-out. Past dates cannot be booked.";
         }
+ 
     }
+
+
+    public function payWithPaypal() {
+    
+        return view('hotels.pay');
+    }
+
+    public function success() {
+    
+        return view('hotels.success');
+    }
+
+
+
 }
+
+
