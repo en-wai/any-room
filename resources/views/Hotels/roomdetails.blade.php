@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
         <div class="col-md-7 ftco-animate">
-            <h2 class="subheading">Welcome to Vacation Rental</h2>
+            <h2 class="subheading">Welcome to ANY-ROOM</h2>
             <h1 class="mb-4">{{$getRoom->name}}</h1>
           <!-- <p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p> -->
         </div>
@@ -83,7 +83,7 @@
                   <div class="col-md-6 wrap-about">
                       <div class="img img-2 mb-4" style="background-image: url({{ asset('assets/images/image_2.jpg') }});">
                       </div>
-                      <h2>The most recommended vacation rental</h2>
+                      <h2>The most recommended  rental</h2>
                       <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
                   </div>
                   <div class="col-md-6 wrap-about ftco-animate">
