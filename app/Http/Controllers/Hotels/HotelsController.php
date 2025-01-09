@@ -8,9 +8,7 @@ use App\Models\Apartment\Apartment;
 use App\Models\Booking\Booking;
 use App\Models\Hotel\Hotel;
 use Illuminate\Support\Facades\Auth;
-use DateTime;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Redirect;
 
 class HotelsController extends Controller
 {
@@ -27,48 +25,47 @@ class HotelsController extends Controller
     }
 
     public function roomBooking(Request $request, $id) {
+        // Validate the incoming request data
+        $request->validate([
+            'check_in' => 'required|date|after:today', // Check-in must be a future date
+            'check_out' => 'required|date|after:check_in', // Check-out must be after check-in
+        ], [
+            'check_in.after' => 'Please select a future check-in date.',
+            'check_out.after' => 'Check-out date must be later than the check-in date.',
+        ]);
+
+        // Fetch room and hotel details
         $room = Apartment::find($id);
-        $hotel = Hotel::find($room->hotel_id);  // Fetch hotel by hotel_id from the room
+        $hotel = Hotel::find($room->hotel_id);
 
-        // Convert dates to DateTime objects for proper comparison
-        $today = new DateTime();
-        $checkIn = new DateTime($request->check_in);
-        $checkOut = new DateTime($request->check_out);
+        // Calculate the number of days
+        $checkIn = new \DateTime($request->check_in);
+        $checkOut = new \DateTime($request->check_out);
+        $interval = $checkIn->diff($checkOut);
+        $days = (int) $interval->format('%a');
 
-        if ($today < $checkIn && $today < $checkOut) {
-            if ($checkIn < $checkOut) {
-                $interval = $checkIn->diff($checkOut);  // Get difference between check-in and check-out
-                $days = (int) $interval->format('%a');  // Convert days to integer
+        // Calculate the total price
+        $pricePerNight = (float) str_replace(['$', ','], '', $room->price);
+        $totalPrice = $days * $pricePerNight;
 
-                // Convert room price to a float for calculation
-                $pricePerNight = (float) str_replace(['$', ','], '', $room->price);  
-                $totalPrice = $days * $pricePerNight;  // Calculate total price
+        // Create a new booking
+        $bookRooms = Booking::create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone_number" => $request->phone_number,
+            "check_in" => $request->check_in,
+            "check_out" => $request->check_out,
+            "days" => $days,
+            "price" => $totalPrice, 
+            "user_id" => Auth::user()->id,
+            "room_name" => $room->name,
+            "hotel_name" => $hotel ? $hotel->name : 'Hotel Not Found', // Handle null hotel
+        ]);
 
-                // Logic for booking rooms
-                $bookRooms = Booking::create([
-                    "name" => $request->name,
-                    "email" => $request->email,
-                    "phone_number" => $request->phone_number,
-                    "check_in" => $request->check_in,
-                    "check_out" => $request->check_out,
-                    "days" => $days,
-                    "price" => $totalPrice, 
-                    "user_id" => Auth::user()->id,
-                    "room_name" => $room->name,
-                    "hotel_name" => $hotel ? $hotel->name : 'Hotel Not Found',  // Handle null hotel
-                ]);
+        // Store price in session and redirect to payment form
+        Session::put('price', $totalPrice);
 
-                // Store price in session and redirect to payment form
-                Session::put('price', $totalPrice);
-
-                return view('hotels.redirect-to-pay')->with('price', $totalPrice);
-
-            } else {
-                echo "The check-out date must be later than the check-in date. Please adjust your selection.";
-            }
-        } else {
-            echo "Please select future dates for both check-in and check-out. Past dates cannot be booked.";
-        }
+        return view('hotels.redirect-to-pay')->with('price', $totalPrice);
     }
 
     public function payWithPaypal(Request $request) {
