@@ -80,6 +80,7 @@ class HotelsController extends Controller
     }
 
     public function success() {
+        Session::forget('price');
         return view('hotels.success');
     }
 }
