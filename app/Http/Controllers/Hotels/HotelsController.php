@@ -9,6 +9,8 @@ use App\Models\Booking\Booking;
 use App\Models\Hotel\Hotel;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class HotelsController extends Controller
 {
@@ -50,43 +52,34 @@ class HotelsController extends Controller
                     "check_in" => $request->check_in,
                     "check_out" => $request->check_out,
                     "days" => $days,
-                    "price" => $totalPrice,
+                    "price" => $totalPrice, 
                     "user_id" => Auth::user()->id,
                     "room_name" => $room->name,
                     "hotel_name" => $hotel ? $hotel->name : 'Hotel Not Found',  // Handle null hotel
                 ]);
 
-                $price = Session::put('price', $totalPrice);
+                // Store price in session and redirect to payment form
+                Session::put('price', $totalPrice);
 
+                return view('hotels.redirect-to-pay')->with('price', $totalPrice);
 
-                $getPrice = Session::put($price);
-
-                return Redirect::route('hotel.pay')
-
-
-                //echo "Your room has been successfully booked for {$days} days at a total price of $ {$totalPrice}.";
             } else {
                 echo "The check-out date must be later than the check-in date. Please adjust your selection.";
             }
         } else {
             echo "Please select future dates for both check-in and check-out. Past dates cannot be booked.";
         }
- 
     }
 
-
-    public function payWithPaypal() {
-    
+    public function payWithPaypal(Request $request) {
+        if ($request->isMethod('post')) {
+            // Process payment logic here
+            return redirect()->route('hotel.success')->with('success', 'Payment successful!');
+        }
         return view('hotels.pay');
     }
 
     public function success() {
-    
         return view('hotels.success');
     }
-
-
-
 }
-
-

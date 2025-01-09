@@ -28,7 +28,7 @@ Route::post('hotels/rooms-booking/{id}', [App\Http\Controllers\Hotels\HotelsCont
 
 
 // Payment Route
-Route::post('hotels/pay', [App\Http\Controllers\Hotels\HotelsController::class, 'payWithPaypal'])->name('hotel.pay');
-Route::post('hotels/success', [App\Http\Controllers\Hotels\HotelsController::class, 'sucess'])->name('hotel.success');
 
-
+Route::get('hotels/pay', [App\Http\Controllers\Hotels\HotelsController::class, 'payWithPaypal'])->name('hotel.pay');  // Allow GET to show payment form
+Route::post('hotels/pay', [App\Http\Controllers\Hotels\HotelsController::class, 'payWithPaypal'])->name('hotel.pay.process');  // POST for actual payment processing
+Route::match(['get', 'post'], 'hotels/success', [App\Http\Controllers\Hotels\HotelsController::class, 'success'])->name('hotel.success');
