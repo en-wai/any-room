@@ -3,6 +3,14 @@
 
 @section('content')
 
+{{-- Display validation errors if any --}}
+@if ($errors->any())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+@endif
 
 <div class="hero-wrap js-fullheight" style="margin-top: -25px; background-image: url('{{ asset('assets/images/room-1.jpg') }} ');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -17,13 +25,7 @@
     </div>
   </div>
 
-{{-- @if ($errors->any())
-    <div class="alert alert-danger">
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    </div>
-@endif --}}
+
 
   <section class="ftco-section ftco-book ftco-no-pt ftco-no-pb">
       <div class="container">
@@ -81,21 +83,7 @@
       </div>
   </section>
  
-    {{-- @if(session()->has('error'))
-        <div class="alert alert-success">
-            {{ session()->get('error') }}
-        </div>
-    @endif
-
-    @if(session()->has('error_dates'))
-        <div class="alert alert-success">
-            {{ session()->get('error_dates') }}
-        </div>
-    @endif --}}
-
-
-
-
+    
   <section class="ftco-section bg-light">
           <div class="container">
               <div class="row no-gutters">
