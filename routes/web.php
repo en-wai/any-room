@@ -26,3 +26,6 @@ Route::get('hotels/rooms/{id}', [App\Http\Controllers\Hotels\HotelsController::c
 Route::get('hotels/rooms-details/{id}', [App\Http\Controllers\Hotels\HotelsController::class, 'roomDetails'])->name('hotel.rooms.details');
 Route::post('hotels/rooms-booking/{id}', [App\Http\Controllers\Hotels\HotelsController::class, 'roomBooking'])->name('hotel.rooms.booking');
 
+
+// Users
+Route::get('users/bookings', [App\Http\Controllers\Users\UsersController::class, 'bookings'])->name('users.bookings');
