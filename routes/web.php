@@ -20,6 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index'); //Welcome page
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about'); //About  page
+Route::get('/services', [App\Http\Controllers\HomeController::class, 'services'])->name('services'); //About  page
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact'); //About  page
 
 // Hotels
 Route::get('hotels/rooms/{id}', [App\Http\Controllers\Hotels\HotelsController::class, 'rooms'])->name('hotel.rooms');
