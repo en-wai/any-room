@@ -15,7 +15,43 @@
         </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="container">  
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">My Bookings</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Room</th>
+                                        <th>Price</th>
+                                        <th>Check In</th>
+                                        <th>Check Out</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($bookings as $booking)
+                                        <tr>
+                                            <td>{{ $booking->room->name }}</td>
+                                            <td>{{ $booking->price }}</td>
+                                            <td>{{ $booking->check_in }}</td>
+                                            <td>{{ $booking->check_out }}</td>
+                                            <td>
+                                                <a href="{{ route('hotel.bookings.cancel', $booking->id) }}" class="btn btn-danger">Cancel</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{-- <div class="table-responsive"> --}}
         <table class="table">
         <caption>List of users</caption>
         <thead>

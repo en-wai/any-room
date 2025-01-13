@@ -26,6 +26,13 @@ Route::get('hotels/rooms/{id}', [App\Http\Controllers\Hotels\HotelsController::c
 Route::get('hotels/rooms-details/{id}', [App\Http\Controllers\Hotels\HotelsController::class, 'roomDetails'])->name('hotel.rooms.details');
 Route::post('hotels/rooms-booking/{id}', [App\Http\Controllers\Hotels\HotelsController::class, 'roomBooking'])->name('hotel.rooms.booking');
 
+// Payment Routes with Restricted Access Middleware
+Route::get('hotels/pay', [App\Http\Controllers\Hotels\HotelsController::class, 'pay'])->middleware('restrict.access')->name('hotel.pay');
+Route::get('hotels/pay/success', [App\Http\Controllers\Hotels\HotelsController::class, 'paypalSuccess'])->middleware('restrict.access')->name('hotel.paypal.success');
+Route::get('hotels/pay/cancel', function () {
+    return redirect()->route('hotel.pay')->withErrors(['error' => 'Payment cancelled.']);
+})->name('hotel.paypal.cancel');
+Route::match(['get', 'post'], 'hotels/success', [App\Http\Controllers\Hotels\HotelsController::class, 'success'])->middleware('restrict.access')->name('hotel.success');
 
 // Users
-Route::get('users/bookings', [App\Http\Controllers\Users\UsersController::class, 'bookings'])->name('users.bookings');
+Route::get('users/bookings', [App\Http\Controllers\Users\UsersController::class, 'bookings'])->name('users.bookings')->middleware('auth:web');
