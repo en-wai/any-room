@@ -6,7 +6,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
+            <div class="col-md-9 ftco-animate text-center margin-bottom: -25px;">
                 <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{{ route('home') }}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Contact <i class="fa fa-chevron-right"></i></span></p>
                 <h1 class="mb-0 bread">Contact Us</h1>
             </div>
@@ -18,7 +18,18 @@
     <div class="container">
         <div class="row no-gutters">
             <div class="col-md-8">
-                <div id="map" class="map"></div>
+                <div class="map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.9059488986663!2d-0.1929406844413365!3d5.603716695945658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9aaaf17cfa11%3A0x555df4c9ad5e24b!2sAccra%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1673826123456!5m2!1sen!2sgh" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                
+                
             </div>
             <div class="col-md-4 p-4 p-md-5 bg-white">
                 <h2 class="font-weight-bold mb-4">Get in Touch</h2>
