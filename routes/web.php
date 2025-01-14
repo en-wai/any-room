@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index'); //Welcome page
 //Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about'); //About  page
 //Route::get('/services', [App\Http\Controllers\HomeController::class, 'services'])->name('services'); //Services  page
-Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact'); //Contact  page
+//Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact'); //Contact  page
 
 //About  page
 Route::get('/about', function () {
@@ -34,6 +34,11 @@ Route::get('/about', function () {
 Route::get('/services', function () {
     return view('pages.services');
 })->name('services');
+
+//Contact  page
+Route::get('/contact', function () {
+    return view('pages.contact');
+})->name('contact');
 
 // Hotels
 Route::get('hotels/rooms/{id}', [App\Http\Controllers\Hotels\HotelsController::class, 'rooms'])->name('hotel.rooms');
