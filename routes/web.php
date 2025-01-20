@@ -55,3 +55,11 @@ Route::match(['get', 'post'], 'hotels/success', [App\Http\Controllers\Hotels\Hot
 
 // Users
 Route::get('users/bookings', [App\Http\Controllers\Users\UsersController::class, 'bookings'])->name('users.bookings')->middleware('auth:web');
+
+
+
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
