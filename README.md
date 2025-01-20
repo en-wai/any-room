@@ -1,66 +1,138 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Any-ROOM Hotel Booking App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+ANY-ROOM is a feature-rich hotel booking application built using the Laravel framework. It allows users to book hotels, manage rooms, and perform various admin-related tasks using an intuitive admin panel powered by Voyager.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### User-Facing Features
+- Browse available hotels and rooms.
+- Book rooms based on availability.
+- View booking details and status.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Admin Panel Features
+- Powered by Voyager for CRUD functionality.
+- Manage hotels, rooms, and bookings.
+- Role-based access control (RBAC) for secure administration.
+- Custom menu and BREAD (Browse, Read, Edit, Add, Delete) for hotels and bookings.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Technologies Used
 
-## Learning Laravel
+- **Backend**: Laravel (PHP Framework)
+- **Frontend**: Blade templates, HTML, CSS
+- **Database**: MySQL
+- **Admin Panel**: Voyager
+- **Local Development Environment**: Laragon
+- **Version Control**: Git and GitHub
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
+- PHP 8.0 or higher
+- Laragon
+- Composer
+- MySQL
+- Node.js and npm (for frontend assets)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Steps
+1. **Clone the Repository**:
+   ```bash
+   git clone git@github.com:en-wai/any-room.git
+   cd any-room
+2. **Install Dependencies**:
+    ```bash
+    composer install
+    npm install && npm run dev
+3.  **Rename env.example to .env**:
+    ```bash
+    cp .env.example .env # Edit the .env file if you want to use your own details.
 
-## Laravel Sponsors
+    
+4.  **Update the .env file with your database credentials if you dont want to use mine**:
+    ```bash
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=any-room
+    DB_USERNAME=root
+    DB_PASSWORD=
+5. **Set Up the Example Database**:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* An example database file (example-database.sql) is included in the project. Follow these steps to import it using Laragon:
+    - Open Laragon and ensure your MySQL server is running.
+    - Create a new database named any_room:
+        - Open HeidiSQL or phpMyAdmin (both available in Laragon).
+        - Create a database manually or using the SQL command:
+        ```sql
+        CREATE DATABASE any-room;
+6. **Import the example-database.sql file**:
+* phpMyAdmin: Use the Import tab and select the file.
+* HeidiSQL: Right-click on the any_room database and choose Import SQL File.
+7. **Install Voyager**:
+   1. Require Voyager via Composer:
+      ```bash
+      composer require tcg/voyager
+      
+   2. Run the Voyager install command:
+      ```bash
+      php artisan voyager:install
+8.  Start the Development Server:
 
-### Premium Partners
+    * Start the Laragon server.
+        Visit http://localhost or http://127.0.0.1:8000 to access the app.
+## Usage
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Admin Panel
+- Login at `/admin` with the default credentials:
+  - **Email**: `admin@admin.com`
+  - **Password**: `password`
 
-## Contributing
+### Public Interface
+- Explore available hotels and rooms.
+- Book a room and manage bookings.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Folder Structure
+- **`app/Models`**: Contains Eloquent models for Hotels, Rooms, and Bookings.
+- **`resources/views`**: Blade templates for the frontend and admin panel.
+- **`routes/web.php`**: Defines application routes.
 
-## Code of Conduct
+## Project Demo
+### Video Demo
+[Insert Video URL Here]
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Presentation
+[Insert Google Slides URL Here]
 
-## Security Vulnerabilities
+## Development Report
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Successes
+- Fully functional admin panel for hotel and booking management.
+- Smooth integration of Voyager for admin tasks.
+- Responsive and user-friendly UI.
+
+### Challenges
+- Troubleshooting BREAD configuration issues.
+- URL routing conflicts during Voyager setup.
+
+### Lessons Learned
+- Deepened understanding of Laravel's MVC architecture.
+- Learned efficient use of Voyager for rapid admin panel development.
+
+### Next Steps
+- Implement room management features.
+- Add advanced search and filtering options.
+- Integrate analytics and reporting dashboard.
+
+## Contribution
+Contributions are welcome! Feel free to fork the repository and submit a pull request.
+
+## Acknowledgements
+
+- This project uses a front-end template from [Colorlib](https://colorlib.com) to accelerate development. The template has been customized to align with the needs of ANY-ROOM.
+- Icons are sourced from [FontAwesome](https://fontawesome.com).
+
+
 
 ## License
+This project is open-source and available under the [MIT License](LICENSE).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
