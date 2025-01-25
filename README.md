@@ -97,10 +97,11 @@ ANY-ROOM is a feature-rich hotel booking application built using the Laravel fra
 
 ## Project Demo
 ### Video Demo
-[Insert Video URL Here]
+
+https://drive.google.com/file/d/15s63CTrLqJr-hsmM5fQkagHEUD-r2ix7/view?usp=sharing
 
 ### Presentation
-[Insert Google Slides URL Here]
+https://docs.google.com/presentation/d/1rJ3bUfJQtE31ydn0IvcGcOmAemW81D1mQ5ml-tXrd50/edit?usp=sharing
 
 ## Development Report
 
@@ -127,7 +128,7 @@ Contributions are welcome! Feel free to fork the repository and submit a pull re
 
 ## Acknowledgements
 
-- This project uses a front-end template from [Colorlib](https://colorlib.com) to accelerate development. The template has been customized to align with the needs of ANY-ROOM.
+- This project uses a front-end template from [Themesberg](https://themesberg.com/themes) to accelerate development. The template has been customized to align with the needs of ANY-ROOM.
 - Icons are sourced from [FontAwesome](https://fontawesome.com).
 
 

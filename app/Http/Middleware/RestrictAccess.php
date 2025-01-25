@@ -23,7 +23,10 @@ class RestrictAccess
         ];
 
         if (in_array($request->path(), $restrictedPaths)) {
-            return response('Forbidden', Response::HTTP_FORBIDDEN);
+            // Check for valid session data
+            if (!session()->has('price')) {
+                return response('Forbidden', Response::HTTP_FORBIDDEN);
+            }
         }
 
         return $next($request);
